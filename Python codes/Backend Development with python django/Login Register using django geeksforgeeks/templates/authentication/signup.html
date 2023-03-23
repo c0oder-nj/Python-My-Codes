@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SignUp page</title>
+    <style>
+        form {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            flex-wrap: wrap;
+            align-content: center;
+            align-items: flex-start;
+        }
+    </style>
+</head>
+
+<body>
+    {% for message in messages %}
+    <div class="alert alert-{{ message.tags}} alert-dismissible fade show" role="alert">
+      <strong>Message:</strong>{{message}}
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&time;</span>
+    </div>
+    {% endfor %} 
+
+    
+    <form action="/signup" method="post">
+        {% csrf_token %}
+        <label for="fname">First Name:</label>
+        <input type="text" , id="fname" , name="fname" , placeholder="Enter your first name" required>
+
+        <label for="lname">Last Name:</label>
+        <input type="text" , id="lname" , name="lname" , placeholder="Enter your Last name" ,required>
+
+        <label for="email">E mail:</label>
+        <input type="email" , id="email" , name="email" , placeholder="Enter your email address" ,required>
+
+        <label for="UserName">Create Your username:</label>
+        <input type="text" , id="u_name" , name="u_name" , placeholder="create username, Should be alphaneumeric"
+            ,required>
+
+        <label for="Password">Create Your Passowrd:</label>
+        <input type="password" , id="password" , name="pass1" , placeholder="Create your password" ,required>
+
+        <label for="Passowrd">Re-Enter your Password: </label>
+        <input type="password" , id="password-show" , name="pass2" , placeholder="Re-Enter your password" ,required>
+
+        <label for="password-show">Show password</label>
+        <input type="checkbox" name="check-this" onclick="show_pass()">
+
+        <label for="submit">Submit</label>
+        <input type="submit" name="submit" value="Submit">
+    </form>
+</body>
+<script>
+    function show_pass(){
+        var x = document.getElementById('password-show');
+        if(x.type == 'password'){
+            x.type = 'text';
+        }
+        else{
+            x.type = 'password';
+        }
+    }
+</script>
+</html>

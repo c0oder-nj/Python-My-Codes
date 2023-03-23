@@ -1,0 +1,5 @@
+When to use migration and  migrate
+	python manage.py makemigrations is used when we change the context of file that is made by django itself e.g. if we change something in settings.py i.e. our setting file, created by django so we need to run makemigrations
+								The meaning of makemigrations means note the changes done by developer
+		Then we have python manage.py migrate it means that save the changes done by the user
+in simple words ---- makemigrations create the file that stores the changes and migrate apply that changes to the django created files.
